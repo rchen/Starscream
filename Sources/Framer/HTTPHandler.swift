@@ -66,7 +66,8 @@ public struct HTTPWSHeader {
         req.setValue(HTTPWSHeader.connectionValue, forHTTPHeaderField: HTTPWSHeader.connectionName)
         req.setValue(HTTPWSHeader.versionValue, forHTTPHeaderField: HTTPWSHeader.versionName)
         req.setValue(secKeyValue, forHTTPHeaderField: HTTPWSHeader.keyName)
-        
+        req.setValue("v12.stomp", forHTTPHeaderField: "Sec-WebSocket-Protocol")
+
         if let cookies = HTTPCookieStorage.shared.cookies(for: url), !cookies.isEmpty {
             let headers = HTTPCookie.requestHeaderFields(with: cookies)
             for (key, val) in headers {
